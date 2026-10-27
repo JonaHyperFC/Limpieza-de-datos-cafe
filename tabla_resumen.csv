@@ -1,0 +1,19 @@
+Problema encontrado,Registros afectados,Acción realizada,Justificación
+Faltantes en item (636 'ERROR'/'UNKNOWN' + 333 nulos),969,Unificar todos como NaN,"Son marcadores de dato faltante, no valores reales; un solo criterio simplifica la imputación."
+Faltantes en quantity (341 'ERROR'/'UNKNOWN' + 138 nulos),479,Unificar todos como NaN,"Son marcadores de dato faltante, no valores reales; un solo criterio simplifica la imputación."
+Faltantes en price_per_unit (354 'ERROR'/'UNKNOWN' + 179 nulos),533,Unificar todos como NaN,"Son marcadores de dato faltante, no valores reales; un solo criterio simplifica la imputación."
+Faltantes en total_spent (329 'ERROR'/'UNKNOWN' + 173 nulos),502,Unificar todos como NaN,"Son marcadores de dato faltante, no valores reales; un solo criterio simplifica la imputación."
+Faltantes en payment_method (599 'ERROR'/'UNKNOWN' + 2579 nulos),3178,Unificar todos como NaN,"Son marcadores de dato faltante, no valores reales; un solo criterio simplifica la imputación."
+Faltantes en location (696 'ERROR'/'UNKNOWN' + 3265 nulos),3961,Unificar todos como NaN,"Son marcadores de dato faltante, no valores reales; un solo criterio simplifica la imputación."
+Faltantes en transaction_date (301 'ERROR'/'UNKNOWN' + 159 nulos),460,Unificar todos como NaN,"Son marcadores de dato faltante, no valores reales; un solo criterio simplifica la imputación."
+Columnas con tipo incorrecto (todo texto),4,"Cast a numérico (quantity, price_per_unit, total_spent) y datetime (transaction_date)","Permite operar, ordenar y agregar correctamente."
+Price Per Unit faltante con Item conocido,479,Imputar con el precio del menú para ese ítem,Cada producto tiene precio fijo; la recuperación es determinista.
+Total Spent faltante,479,Calcular quantity × price_per_unit,Relación aritmética exacta.
+Quantity faltante,456,Calcular total_spent ÷ price_per_unit,Se recupera solo si el resultado es entero.
+Price Per Unit faltante (con total y cantidad),48,Calcular total_spent ÷ quantity,Relación aritmética exacta.
+Item faltante con precio único en el menú,489,Inferir ítem desde el precio,Solo cuando el precio identifica un único producto; los precios ambiguos no se imputan.
+Filas sin monto/cantidad/precio recuperable,26,Eliminar filas,Sin variables numéricas clave no aportan al análisis; imputar con media/mediana sesgaría los totales.
+item faltante sin recuperación posible,474,Rellenar con 'Unknown',Se conserva la venta (monto válido) y la categoría desconocida queda explícita.
+payment_method faltante sin recuperación posible,3168,Rellenar con 'Unknown',Se conserva la venta (monto válido) y la categoría desconocida queda explícita.
+location faltante sin recuperación posible,3952,Rellenar con 'Unknown',Se conserva la venta (monto válido) y la categoría desconocida queda explícita.
+Fecha faltante,460,Mantener como NaT,Inventar fechas distorsionaría series de tiempo; se excluyen solo en análisis temporales.
